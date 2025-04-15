@@ -1,20 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import './App.css'
-
-function App() {
+function App(){
   const [count, setCount] = useState(0)
+  //onpress function
+  function onClickhandler(){
+    
+    console.log()
+  }
 
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      
-    </>
+    <div>
+      <button onClick={onClickhandler}>Counter {}</button>
+    </div>
   )
 }
+
+
 
 export default App
