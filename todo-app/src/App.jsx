@@ -35,8 +35,8 @@ function App(){
     setTodos([...todos,{
       title:"new Todo",
       description:"new Description"
-    }])
-  } 
+     }])
+  }                            
   return (
     <div>
        {/* <Todo title ={todos[0].title} description={todos[0].description}/>
