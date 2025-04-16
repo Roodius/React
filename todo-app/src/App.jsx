@@ -32,25 +32,30 @@ function App(){
     }
   ]);
   function addtodo(){
-    setTodos([...todos,{
-      title:"new Todo",
-      description:"new Description"
-     }])
-  }                            
+    let newTodos = [];
+    for(let i=0; i<todos.length; i++){
+      newTodos.push(todos)
+    }
+    newTodos.push({
+        title:"new Todo",
+        description:"new Description"       
+    })
+    setTodos(newTodos)   
+  } 
   return (
     <div>
-       {/* <Todo title ={todos[0].title} description={todos[0].description}/>
-       <Todo title ={todos[1].title} description={todos[1].description}/> */}
        <button onClick={addtodo}>add Random Todo</button>
+
        {todos.map(function(todo){
         return (
-          <Todo title={todo.title} description={todo.description}/>
-        )                    
-       })}    
+          <Todo title={todo.title} description={todo.description}/>)                    
+       })}
+
+        <NewTodos todos={todos}/>   
     </div>
   )
 }
-
+  // component for render a todos 
 function Todo(props){
   return (
     <ul>
@@ -60,5 +65,15 @@ function Todo(props){
   )
 }
 
+// New components
+function NewTodos(props){
+  return <div>
+  {props.todos.map(function(todo){
+    return (
+     <div style={{background:"black",color:"white"}}> <Todo title={todo.title} description={todo.description}/></div>
+    )                    
+   })}
+   </div>
+}
 
 export default App
