@@ -11,6 +11,8 @@ import { useState } from "react"
   todo:0
   }
 
+  // Done Todo
+
 */
 
 function App(){
@@ -29,8 +31,25 @@ function App(){
       title:"Go to Collage tommarrow",
       description:"collage on 8 pm",
       completed:false
-    }
+    },
+    {
+      title:"Go to hospital",
+      description:"collage on 8 pm",
+      completed:false
+    },
+    {
+      title:"Go to hospital",
+      description:"collage on 8 pm",
+      completed:false
+    },
+    {
+      title:"Go to hospital",
+      description:"collage on 8 pm",
+      completed:false
+    }, 
   ]);
+
+
   function addtodo(){
     let newTodos = [];
     for(let i=0; i<todos.length; i++){
@@ -55,6 +74,8 @@ function App(){
     </div>
   )
 }
+
+
   // component for render a todos 
 function Todo(props){
   return (
