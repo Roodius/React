@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { PropExmaple } from "./prop";
 /* 
   todo 
   {
@@ -16,6 +16,9 @@ import { useState } from "react"
 */
 
 function App(){
+  const [count, setCount] = useState(0);
+  
+
   const [todos, setTodos] = useState([
     {
       title:"Go to Gym",
@@ -51,12 +54,22 @@ function App(){
         title:"new Todo",
         description:"new Description"       
     })
-    setTodos(newTodos)   
+    setTodos(newTodos)
+
+    //  {there  are two syntax ot methods}
+   let newTodos2 = [...todos,{
+      title:"osmans",
+      description:"new dother ofewoifh"
+    }]
+
+    setTodos(newTodos2);
+
+
   } 
   return (
     <div>
        <button onClick={addtodo}>add Random Todo</button>
-
+       <PropExmaple count = {count} setCount = {setCount}/>
        {todos.map(function(todo){
         return (
           <Todo title={todo.title} description={todo.description}/>)                    
