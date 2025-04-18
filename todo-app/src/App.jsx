@@ -36,17 +36,7 @@ function App(){
       title:"Go to hospital",
       description:"collage on 8 pm",
       completed:false
-    },
-    {
-      title:"Go to hospital",
-      description:"collage on 8 pm",
-      completed:false
-    },
-    {
-      title:"Go to hospital",
-      description:"collage on 8 pm",
-      completed:false
-    }, 
+    } 
   ]);
 
 
@@ -82,7 +72,7 @@ function Todo(props){
     <ul>
   <b>{props.title}</b>
   <li>{props.description}</li>
-  </ul>
+  </ul> 
   )
 }
 
