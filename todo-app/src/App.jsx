@@ -39,8 +39,10 @@ function App(){
     } 
   ]);
 
+  console.log("app got called");
 
   function addtodo(){
+    console.log("addtodo called");
     let newTodos = [];
     for(let i=0; i<todos.length; i++){
       newTodos.push(todos)
@@ -68,6 +70,7 @@ function App(){
 
   // component for render a todos 
 function Todo(props){
+  console.log("new Todo Called");
   return (
     <ul>
   <b>{props.title}</b>
