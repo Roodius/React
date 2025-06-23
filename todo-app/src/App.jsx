@@ -56,7 +56,7 @@ function App(){
     })
     setTodos(newTodos)
 
-    //  {there  are two syntax ot methods}
+    //  {there  are two syntax of methods}
    let newTodos2 = [...todos,{
       title:"osmans",
       description:"new dother ofewoifh"
@@ -65,7 +65,7 @@ function App(){
     setTodos(newTodos2);
 
 
-  } 
+  }   
   return (
     <div>
        <button onClick={addtodo}>add Random Todo</button>
