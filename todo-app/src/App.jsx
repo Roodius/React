@@ -54,7 +54,7 @@ function App(){
         title:"new Todo",
         description:"new Description"       
     })
-    setTodos(newTodos)
+    setTodos(newTodos);
 
     //  {there  are two syntax of methods}
    let newTodos2 = [...todos,{
@@ -74,14 +74,14 @@ function App(){
         return (
           <Todo title={todo.title} description={todo.description}/>)                    
        })}
-
+        <darknewTodos todos={todos}/>
         <NewTodos todos={todos}/>   
     </div>
   )
 }
 
 
-  // component for render a todos 
+  // component for render a todos   
 function Todo(props){
   console.log("new Todo Called");
   return (
@@ -93,7 +93,7 @@ function Todo(props){
 }
 
 // New components
-function NewTodos(props){
+function DarknewTodos(props){
   return <div>
   {props.todos.map(function(todo){
     return (
