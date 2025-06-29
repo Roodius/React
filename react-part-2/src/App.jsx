@@ -1,51 +1,44 @@
+import { useEffect, useState } from "react"
 
 
 function App(){
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9zbWFuIiwiaWF0IjoxNzUxMDM0NzAzfQ.RNhoK7KGbB_ILHzdeguCEeZ7__UuB70iUxtxgnkDbuY";
+  const [todos, setTodos] = useState([]);
+  
+  useEffect(() => {
+    console.log("use Effect Runs")
+     setTimeout(() => {
+        fetch("http://localhost:3000/todo/Gettodo", {
+      method:"GET",
+      headers:{
+        'Authorization': `Bearer ${token}`,
+      }
+      }).then((res) => {
+      if(!res.ok) throw new Error(`HTTP${res.status}`);
+      return res.json();
+    }).then((data) => {
+      setTodos(data.todos)
+      console.log(data)
+    }).catch(err => {
+      console.log("Fetch Error", err)
+    })
+  }, 3000)
+    
+  },[])
 
-  return <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-    <CardWrapper>
-      <div>
-      <Hello/>
-      </div>
-    </CardWrapper>
-
-  <CardWrapper>
-    <By />
-  </CardWrapper>
-
-  </div>
-}
-
-function By(){
-  return <>
-    By There
+  return <> 
+    {Array.isArray(todos) && todos.map((todo,i) => (
+      <Todo key={i} title={todo.title} description={todo.description}/>
+    ))}
   </>
 }
 
-function Hello(){
-    return <>
-      hi there
-      </>
+function Todo({title,description}){
+  return <div>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
 }
 
-function CardWrapper({children}){
-      return <div style={{border:"black 2px solid", height:"300px", width:"250px", alignItems:"center", display:"flex", justifyContent:"center", margin:"10px",padding:"10px"}}>
-         {children}
-      </div>
-}
-// function TextComponent(){x
-//     return <div>
-//           <p>This is a Text Component</p> 
-//     </div>
-// }
 
-// function TextComponent2(){
-//   return <div>
-//     <p>This is a Component 2</p>
-//   </div>
-// }
-
-
-
-
-export default App; 
+export default App;
