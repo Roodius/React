@@ -1,36 +1,35 @@
-import { useContext, useState } from "react";
-import { CountContext } from "./Context";
+import { useRecoilState, useRecoilValue, RecoilRoot } from "recoil";
+import { countAtom } from "./store/atom/count";
 
 function App(){
-   const [count, setCount] = useState(0);   
+      
   return <div>
-    <CountContext.Provider value={{count, setCount}}>
-    <Count count={count} setCount={setCount}/>
-    </CountContext.Provider>
+    <RecoilRoot>
+        <Count />
+    </RecoilRoot>
+    
   </div> 
 
 }
 
-function Count({setCount}){
-
+function Count(){
+    console.log("Count Compo re-render")
   return <div>
      <CountRenderer/>
-    <Buttons setCount={setCount}/> 
+    <Buttons /> 
   </div>
 
 }
 
 function CountRenderer(){
-    const count =  useContext(CountContext);
-    console.log("in the count renderer",count);
+  const count = useRecoilValue(countAtom)
   return <div style={{margin:"10px"}}>
     Count : {count}
   </div>
 }
 
 function Buttons(){
-    const {count ,setCount }= useContext(CountContext);
-    console.log("in the button compo",   count)
+  const [count, setCount] = useRecoilState(countAtom)
   return <div>
     <button style={{margin:"10px"}} onClick={() => {setCount(count+1)}}>Increase</button>
     <button onClick={() => {
