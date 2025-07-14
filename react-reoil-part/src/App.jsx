@@ -1,35 +1,31 @@
-import {useRecoilValue, RecoilRoot, useRecoilState} from 'recoil'
-import { JobsAtom, messagingsAtom, networkAtom, notificationsAtom, totalNotificationSelector } from "./atom"
-import { useMemo } from 'react';
+import {useRecoilValue, RecoilRoot} from 'recoil'
+import {notificationsAtom, totalNotificationSelector } from "./atom"
+import { Suspense } from 'react'
 
 function App() {
 
   return <>
       <RecoilRoot>
+        <Suspense fallback={<div>"loading"</div>}>
           <Topbar/>
+        </Suspense>
       </RecoilRoot>
       </> 
 }
 
 
 function Topbar(){
-    const  networkNotificationsCount = useRecoilValue(networkAtom);
-    const  jobsNotificationsCount = useRecoilValue(JobsAtom);
-    const  MessagindNotificationsCount = useRecoilValue(messagingsAtom);
-    const  NotificationsCount = useRecoilValue(notificationsAtom);
-    const totalNotificationCount = useRecoilValue(totalNotificationSelector)
-    // const totalNotificationCount = useMemo(() => {
-    //   return networkNotificationsCount + jobsNotificationsCount + MessagindNotificationsCount + NotificationsCount
-    // }, [networkNotificationsCount , jobsNotificationsCount , MessagindNotificationsCount , NotificationsCount])
+    const notificationCount = useRecoilValue(notificationsAtom)
+    const TotalnotificationCount = useRecoilValue(totalNotificationSelector)
 
   return <div>
     <button>Home</button>
 
-    <button>My Network({networkNotificationsCount >= 100 ? "99+" : networkNotificationsCount})</button>
-    <button>Jobs({jobsNotificationsCount})</button>
-    <button>Messaging({MessagindNotificationsCount})</button>
-    <button>Notifications({NotificationsCount})</button>
-    <button>Me ({totalNotificationCount})</button>      
+    <button>My Network({notificationCount.network >= 100 ? "99+" : notificationCount.network})</button>
+    <button>Jobs({notificationCount.jobs})</button>
+    <button>Messaging({notificationCount.messaging})</button>
+    <button>Notifications({notificationCount.notification})</button>
+    <button>Me ({TotalnotificationCount})</button>      
   </div>
 } 
 export default App;
