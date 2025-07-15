@@ -1,4 +1,4 @@
-import {RecoilRoot, useRecoilValue} from "recoil"
+import {RecoilRoot, useRecoilValue, useRecoilValueLoadable, useRecoilStateLoadable} from "recoil"
 import { todosAtomFamily } from "./atoms"
 
 
@@ -16,11 +16,15 @@ function App() {
 
 
 function Todo({id}){
-  const currentTodo =  useRecoilValue(todosAtomFamily(id))
-  return <>
-    <p>{currentTodo.title}</p>
-    {currentTodo.description}  
-  </>
-}
+  const currentTodo =  useRecoilValueLoadable(todosAtomFamily(id))
+  if (currentTodo.state == "loading") return <div>
+    loading....
+  </div>
+  else if (currentTodo.state == "hasValue") return (<>
+<p>{currentTodo.contents.title}</p>
+    {currentTodo.contents.description}  
+  </>  
+)
+} 
 
 export default App
