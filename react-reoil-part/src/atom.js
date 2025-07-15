@@ -7,8 +7,16 @@ export const notificationsAtom  = atom({
     default: selector({
         key:"notificationsAtomSelector",
         get: async () => {
-            const res = axios.get('http://localhost:3000/getState')
-            return res.data;
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                         axios.get('http://localhost:3000/getState')
+                        .then((res) => {
+                            resolve(res.data)
+                        }).catch((err) => {
+                            reject(err)
+                        })
+                }, 1000)
+            })
         }   
     })
 })

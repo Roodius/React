@@ -6,7 +6,7 @@ function App() {
 
   return <>
       <RecoilRoot>
-        <Suspense fallback={<div>"loading"</div>}>
+        <Suspense fallback={<div>loading</div>}>
           <Topbar/>
         </Suspense>
       </RecoilRoot>
