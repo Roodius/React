@@ -3,7 +3,7 @@ import { renderToPipeableStream } from "react-dom/server";
 
 export function VideoCard(props:any) {
 
-    return <div>
+    return <div className="p-3 ">
         <img src={props.thumnailImage} className="rounded-xl "/>
         <div className="grid grid-cols-12">
 

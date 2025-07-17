@@ -1,6 +1,8 @@
-import {atom, selector} from "recoil"
+import {atom} from "recoil"
 
 export const charAtom = atom({
     key: "charState",
     default:0
 })
+
+  
