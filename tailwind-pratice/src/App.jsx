@@ -5,14 +5,14 @@ function App(){
 
 
   return <div>
+    {/*how to make it responsive*/}
 
-    <div className="flex justify-center">
-        <div className="bg-red-500">red</div>
-        <div className="bg-yellow-500">yellow</div>
-        <div className="bg-green-600">green</div>
-    </div>
+      <div className="bg-red-500 text-center md:bg-blue-500 ">
+          <div>
+            Hello there
+          </div>
+      </div>
 
-    
 
   </div>
 }
